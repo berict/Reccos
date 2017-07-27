@@ -207,6 +207,9 @@ footer{
 	.card{
 		width:80%;
 	}
+	.logo {
+		width:20%;
+	}
 	#fab{
 		bottom:2%;
 		right:2%;
@@ -215,6 +218,9 @@ footer{
 @media (max-width: 480px){
 	.card{
 		width:90%;
+	}
+	.logo {
+		width:30%;
 	}
 	#fab{
 		bottom:2%;
