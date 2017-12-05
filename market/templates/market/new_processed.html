@@ -1,0 +1,21 @@
+{% extends 'market/base.html' %}
+{% load staticfiles %}
+{% block head %}
+<div id="quick_card" class="card">
+    <h1 id="name">New item</h1>
+</div>
+{% block main %}
+<div>
+    <div id="about_card" class="card">
+        <section class="tab">
+            <div class="title">{{ form.id }} has been uploaded</div>
+            <div class="content">
+                <section class="element">
+                    <div class="name">ok thx</div>
+                </section>
+                <hr align="left">
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

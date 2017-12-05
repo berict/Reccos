@@ -1,0 +1,27 @@
+{% extends 'market/base.html' %}
+{% load staticfiles %}
+{% block main %}
+<div>
+    <div id="about_card" class="card">
+        <section class="tab">
+            <div class="title">Items</div>
+            <div class="content">
+                {% for item in items %}
+                <section class="element">
+                    <div class="name">{{ item.product }}</div>
+                    <div class="info">
+                        <p>$ {{ item.price }}</p>
+                        <p>Uploaded by {{ item.user }}</p>
+                        <p><a href="/item/{{ item.id }}">Learn more</a></p>
+                    </div>
+                </section>
+                <hr align="left">
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    <a href="new" id="fab" style="cursor: pointer">
+        <i class="material-icons md-24 vertical-align-middle padding-bottom-4">create</i>
+    </a>
+</div>
+{% endblock %}

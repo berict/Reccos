@@ -1,0 +1,20 @@
+{% extends 'market/base.html' %}
+{% load staticfiles %}
+{% block head %}
+<div id="quick_card" class="card">
+    <h1 id="name">New item</h1>
+</div>
+{% endblock %}
+{% block main %}
+<div>
+    <div id="about_card" class="card">
+        <section class="tab">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}
