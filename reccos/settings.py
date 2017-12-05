@@ -25,7 +25,10 @@ SECRET_KEY = '&n5*9+laf-p1_48u8a*62=c+6(700(r4-p6a)m2&ysre-t3fd0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'www.reccospro.com',
+    'reccospro.com'
+]
 
 
 # Application definition
