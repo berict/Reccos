@@ -7,7 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://code.getmdl.io/1.3.0/material.blue-green.min.css" rel="stylesheet"/>
+    <link href="{% static 'market/css/material.css' %}" rel="stylesheet"/>
     <link href="{% static 'market/css/font-awesome.min.css' %}" rel="stylesheet">
     <meta name="description" content="Useful and fun applications with quality.">
     <meta name="author" content="Reccos">
@@ -20,16 +20,20 @@
     {% block head %}
     {% endblock %}
 </head>
-<body>
+<body style="margin-bottom: 24px">
     <div id="blue_bg"></div>
     <header>
         <img src="{% static 'market/img/logo.png' %}" class="logo">
         <div id="quick_card" class="card">
-            <h1 id="name">Reccos</h1>
-            <h2 id="description">bruh</h2>
+            <h1 id="name">
+                {% block title %}
+                {% endblock %}
+            </h1>
+            <h2 id="description">
+                {% block description %}
+                {% endblock %}
+            </h2>
         </div>
-        {% block header %}
-        {% endblock %}
     </header>
     <main>
         {% block main %}

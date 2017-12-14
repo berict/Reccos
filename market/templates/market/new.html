@@ -6,10 +6,11 @@
 <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Roboto+Mono' type='text/css'>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-{% block header %}
-<div id="quick_card" class="card">
-    <h1 id="name">New item</h1>
-</div>
+{% block title %}
+New item
+{% endblock %}
+{% block description %}
+Sell stuffs
 {% endblock %}
 {% block main %}
 <div>
@@ -17,21 +18,21 @@
         <section class="tab">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.non_field_errors }}
+                <!--{{ form.non_field_errors }}
                 <section class="element">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
                         <input class="mdl-textfield__input" name="brand" type="text" id="brand" autocomplete="on">
                         <label class="mdl-textfield__label" for="brand">Brand</label>
                     </div>
                 </section>
                 <section class="element">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
                         <input class="mdl-textfield__input" name="type" type="text" id="type" autocomplete="on">
                         <label class="mdl-textfield__label" for="type">Type</label>
                     </div>
                 </section>
                 <section class="element">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
                         <input class="mdl-textfield__input" name="product" type="text" id="product" autocomplete="on">
                         <label class="mdl-textfield__label" for="product">Product</label>
                     </div>
@@ -41,7 +42,7 @@
                         <button type="button" id="dropdown-gender" class="mdl-button">
                             Select product gender
                         </button>
-                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="dropdown-gender">
+                        <ul class="mdl-menu mdl-menu&#45;&#45;bottom-left mdl-js-menu mdl-js-ripple-effect" for="dropdown-gender">
                             <li class="mdl-menu__item" onclick="">Mens</li>
                             <li class="mdl-menu__item" onclick="">Womens</li>
                             <li class="mdl-menu__item" onclick="">Kids</li>
@@ -50,11 +51,12 @@
                     </div>
                 </div>
                 <section class="element">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
                         <input class="mdl-textfield__input" name="price" type="number" id="price" autocomplete="on">
                         <label class="mdl-textfield__label" for="price">Price</label>
                     </div>
-                </section>
+                </section>-->
+                {{ form.as_p }}
                 <button type="submit" class="mdl-button">
                     Submit
                 </button>
