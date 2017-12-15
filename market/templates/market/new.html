@@ -15,7 +15,7 @@ Sell stuffs
         <section class="tab">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.non_field_errors }}
+                <!--{{ form.non_field_errors }}
                 <section class="element">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
                         <input class="mdl-textfield__input" name="product" type="text" id="id_product" autocomplete="on">
@@ -58,8 +58,8 @@ Sell stuffs
                         <input class="mdl-textfield__input" name="price" type="number" id="id_price" autocomplete="on">
                         <label class="mdl-textfield__label" for="price">Price</label>
                     </div>
-                </section>
-                <!-- {{ form.as_p }} -->
+                </section>-->
+                {{ form.as_p }}
                 <button type="submit" class="mdl-button">
                     Submit
                 </button>

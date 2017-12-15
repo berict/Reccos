@@ -1,15 +1,24 @@
+import datetime
+
 from django.db import models
 from django.utils import timezone
+from django_countries.fields import CountryField
 
 
 class Item(models.Model):
-
+    PAYMENT_CHOICES = (
+        ('PP', 'PayPal'),
+        ('PW', 'Paymentwall'),
+        ('GW', 'Google Wallet'),
+        ('BP', 'Bank payments'),
+        ('OT', 'Other'),
+    )
     id = models.AutoField(primary_key=True)
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    quantity = models.IntegerField()
-    sold = models.IntegerField()
+    quantity = models.IntegerField(default=1)
+    sold = models.IntegerField(default=0)
 
-    payments = 'PayPal' # TODO add payment methods
+    payments = models.CharField(max_length=2, choices=PAYMENT_CHOICES, default='OT')
     price = models.FloatField()
 
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
@@ -52,12 +61,12 @@ class Product(models.Model):
         ('U', 'Unisex'),
     )
 
-    name = models.CharField(min_length=4, max_length=50)
+    name = models.CharField(max_length=50)
     brand = models.CharField(max_length=2, choices=BRAND_CHOICES, default='OT')
     type = models.ForeignKey('Type', on_delete=models.CASCADE)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
-    description = models.CharField(min_length=10, max_length=100)
-    pid = models.CharField()
+    description = models.CharField(max_length=100)
+    pid = models.CharField(max_length=16)
     size = models.IntegerField()
     color = models.TextField()
 
@@ -96,15 +105,23 @@ class TypeBoot(Type):
 
 
 class Delivery(models.Model):
-     shipping = models.FloatField()
-     eta = models.ForeignKey('DateRange', on_delete=models.CASCADE)
-     # available_country = models. # TODO add country labels
+    shipping = models.FloatField()
+    eta = models.ForeignKey('DateRange', on_delete=models.CASCADE)
+    available_country = CountryField(multiple=True)
 
 
 class DateRange(models.Model):
-    start_date = models.IntegerField()
-    end_date = models.IntegerField()
+    min = models.IntegerField()
+    max = models.IntegerField()
 
     def min_days(self):
-        return self.start_date
+        return self.min
 
+    def max_days(self):
+        return self.max
+
+    def min_date(self):
+        return datetime.date.today() + datetime.timedelta(days=self.min)
+
+    def max_date(self):
+        return datetime.date.today() + datetime.timedelta(days=self.max)
