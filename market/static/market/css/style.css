@@ -209,6 +209,9 @@ footer{
 
 /* MEDIA */
 @media (min-width: 961px){
+	.logo {
+		width:10%;
+	}
 	#fab{
 		top:calc(25% - 30px);
 		right:calc((100% - 550px)/4 - 30px);
@@ -231,7 +234,7 @@ footer{
 		width:90%;
 	}
 	.logo {
-		width:30%;
+		width:40%;
 	}
 	#fab{
 		bottom:2%;
