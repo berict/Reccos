@@ -9,16 +9,21 @@ item details
 {% block main %}
 <div id="about_card" class="card">
     <section class="tab">
-        <div class="title">Items</div>
+        <div class="title" style="margin-bottom: 16px">{{ item.product }}</div>
         <div class="content">
             <section class="element">
-                <div class="name">{{ item.product }}</div>
+                <div class="name">{{ item.type }} - {{ item.brand }}</div>
                 <div class="info">
                     <p>$ {{ item.price }}</p>
-                    <p>Uploaded by {{ item.user }}</p>
+                    <i>Uploaded by {{ item.user }}</i>
                 </div>
+
+                <a href="edit" style="float: right; margin-bottom: 8px">
+                    <button type="button" class="mdl-button">
+                        Edit
+                    </button>
+                </a>
             </section>
-            <hr align="left">
         </div>
     </section>
 </div>

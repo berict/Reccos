@@ -14,11 +14,13 @@ meh
             <div class="content">
                 {% for item in items %}
                 <section class="element">
-                    <div class="name">{{ item.product }}</div>
+                    <a href="/item/{{ item.id }}">
+                        <div class="name">{{ item.product }}</div>
+                    </a>
                     <div class="info">
                         <p>$ {{ item.price }}</p>
                         <p>Uploaded by {{ item.user }}</p>
-                        <p><a href="/item/{{ item.id }}">Learn more</a></p>
+                        <p></p>
                     </div>
                 </section>
                 <hr align="left">
