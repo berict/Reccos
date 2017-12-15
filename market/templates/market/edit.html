@@ -1,0 +1,109 @@
+{% extends 'market/base.html' %}
+{% load staticfiles %}
+{% block head %}
+<script defer src="{% static 'market/js/material.js' %}"></script>
+{% endblock %}
+{% block title %}
+Edit item
+{% endblock %}
+{% block description %}
+Sell stuffs
+{% endblock %}
+{% block main %}
+<div>
+  <div id="about_card" class="card">
+    <section class="tab">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <section class="element">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+            <input class="mdl-textfield__input" name="product" type="text" id="id_product" autocomplete="on">
+            <label class="mdl-textfield__label" for="product">Product</label>
+          </div>
+        </section>
+        <div class="element" style="margin-bottom:15px;">
+          <div class="info">
+            <button type="button" id="dropdown_button" class="mdl-button">
+              Select product gender
+            </button>
+            <ul class="mdl-menu mdl-menu&#45;&#45;bottom-left mdl-js-menu mdl-js-ripple-effect" for="dropdown_button">
+              <li class="mdl-menu__item" onclick="select('Mens')">Mens</li>
+              <li class="mdl-menu__item" onclick="select('Womens')">Womens</li>
+              <li class="mdl-menu__item" onclick="select('Kids')">Kids</li>
+              <li class="mdl-menu__item" onclick="select('Unisex')">Unisex</li>
+            </ul>
+          </div>
+        </div>
+        <select name="gender" id="id_gender" style="display: none;">
+          <option value="M">Mens</option>
+          <option value="W">Womens</option>
+          <option value="K">Kids</option>
+          <option value="U">Unisex</option>
+        </select>
+        <section class="element">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+            <input class="mdl-textfield__input" name="brand" type="text" id="id_brand" autocomplete="on">
+            <label class="mdl-textfield__label" for="brand">Brand</label>
+          </div>
+        </section>
+        <section class="element">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+            <input class="mdl-textfield__input" name="type" type="text" id="id_type" autocomplete="on">
+            <label class="mdl-textfield__label" for="type">Type</label>
+          </div>
+        </section>
+        <section class="element">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+            <input class="mdl-textfield__input" name="price" type="number" id="id_price" autocomplete="on">
+            <label class="mdl-textfield__label" for="price">Price</label>
+          </div>
+        </section>
+        <!-- {{ form.as_p }} -->
+        <button type="submit" class="mdl-button">
+          Submit
+        </button>
+      </form>
+    </section>
+  </div>
+</div>
+<script>
+
+var sel = document.getElementById('id_gender');
+var btn = document.getElementById('dropdown_button');
+function select(val) {
+  btn.childNodes[0].nodeValue = val;
+  var opts = sel.options;
+  for (var opt, j = 0; opt = opts[j]; j++) {
+    if (opt.value == val) {
+      sel.selectedIndex = j;
+      break;
+    }
+  }
+}
+
+function idToValue(id) {
+  switch(id) {
+    case 'M': return 'Mens'; break;
+    case 'W': return 'Womens'; break;
+    case 'K': return 'Kids'; break;
+    case 'U': return 'Unisex'; break;
+  }
+}
+
+loadValue();
+
+function loadValue() {
+  setValue("id_product", "{{ item.product }}");
+  setValue("id_brand", "{{ item.brand }}");
+  setValue("id_type", "{{ item.type }}");
+  setValue("id_price", "{{ item.price }}");
+  select(idToValue('{{ item.gender }}'));
+}
+
+function setValue(obj, value) {
+  var object = document.getElementById(obj);
+  object.value = value;
+}
+</script>
+{% endblock %}

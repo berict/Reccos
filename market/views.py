@@ -14,12 +14,8 @@ def render_404(request):
     return render(request, "market/404.html", {})
 
 
-def item_detail(request, pk):
+def item_edit(request, pk):
     item = get_object_or_404(Item, pk=pk)
-    return render(request, "market/detail.html", {"item": item})
-
-
-def item_new(request):
     if request.method == "POST":
         form = ItemForm(request.POST)
         if form.is_valid():
@@ -29,12 +25,38 @@ def item_new(request):
                 item.user = User.objects.get(username='bedrockdev')
             except :
                 item.user = User.objects.get(username='joey914')
-            item.save()
-            print('POST saved')
-            return redirect('market:item_detail', pk=item.pk)
+                item.save()
+                print('POST saved')
+                return redirect('market:item_detail', pk=item.pk)
         else:
             print('Warning: not valid form')
-    else:
-        form = ItemForm()
-        print('Warning: request is not POST')
-    return render(request, "market/new.html", {'form': form})
+        else:
+            form = ItemForm()
+            print('Warning: request is not POST')
+            return render(request, "market/new.html", {'form': form}, {"item": item})
+
+
+        def item_detail(request, pk):
+            item = get_object_or_404(Item, pk=pk)
+            return render(request, "market/detail.html", {"item": item})
+
+
+        def item_new(request):
+            if request.method == "POST":
+                form = ItemForm(request.POST)
+                if form.is_valid():
+                    item = form.save(commit=False)
+                    item.created_date = timezone.now()
+                    try:
+                        item.user = User.objects.get(username='bedrockdev')
+                    except :
+                        item.user = User.objects.get(username='joey914')
+                        item.save()
+                        print('POST saved')
+                        return redirect('market:item_detail', pk=item.pk)
+                else:
+                    print('Warning: not valid form')
+                else:
+                    form = ItemForm()
+                    print('Warning: request is not POST')
+                    return render(request, "market/new.html", {'form': form})

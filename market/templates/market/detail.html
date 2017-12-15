@@ -16,11 +16,13 @@ item details
                 <div class="info">
                     <p>$ {{ item.price }}</p>
                     <p>Uploaded by {{ item.user }}</p>
-                    <p><a href="/item/{{ item.id }}">Learn more</a></p>
                 </div>
             </section>
             <hr align="left">
         </div>
     </section>
 </div>
+<a href="edit" id="fab" style="cursor: pointer">
+    <i class="material-icons md-24 vertical-align-middle padding-bottom-4">edit</i>
+</a>
 {% endblock %}
