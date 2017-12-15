@@ -14,23 +14,23 @@ Database of all boots
 * Selling format
 
 ### Brands
-* adidas
-* nike
-* puma
-* lotto
-* new balance
-* under armour
-* mizuno
-* other
-* concave (other)
-* diadora (other)
-* joma (other)
-* pantofola d'Oro (other)
-* penalty (other)
-* warrior (other)
-* mitre (other)
-* asics (other)
-* umbro (other)
+* Adidas
+* Nike
+* Puma
+* Lotto
+* New Balance
+* Under Armour
+* Mizuno
+* Other
+* Concave (other)
+* Diadora (other)
+* Joma (other)
+* Pantofola D'Oro (other)
+* Penalty (other)
+* Warrior (other)
+* Mitre (other)
+* Asics (other)
+* Umbro (other)
 
 ### External links
 * [footballbootsdb](http://www.footballbootsdb.com/boot/)
