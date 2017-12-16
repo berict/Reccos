@@ -45,6 +45,7 @@ class Product(models.Model):
         ('LO', 'Lotto'),
         ('JO', 'Joma'),
         ('AS', 'Asics'),
+        ('HU', 'Hummel'),
         ('CO', 'Concave'),
         ('DI', 'Diadora'),
         ('PA', 'Pantofola D\'Oro'),
